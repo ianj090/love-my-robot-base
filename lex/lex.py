@@ -11,12 +11,12 @@ f.close()
 @app.route("/")
 def translation():
     return render_template(
-        "layout.html"
+        "translated.html",
     )
 
 @app.route("/lex")
 def lex():
-    return "Operations"
+    return "POST endpoint"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")

@@ -1,7 +1,6 @@
 const express = require('express')
 const pug = require('pug');
 var bodyParser = require('body-parser');
-var request = require('request-promise');
 const app = express()
 const port = 8080
 
@@ -11,39 +10,24 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-let commands = ["hello", "yay"]
+let commands = ["SAY", "MOVE"]
 
+app.get('/', (req, res) => res.render('gui', {commands}))
 
-app.get('/', (req, res) => res.render('gui', {
-    commands // Specify the data with data: "foo" (commands: "algo")
-    
-}));
-
-app.get('/postdatatoFlask', async function (req, res) {
-    var data = { // this variable contains the data you want to send
-        data1: "foo",
-        data2: "bar"
+app.post("/postdata", (req, res) => {
+    var code = req.body.status;
+    console.log(code);
+    res.send("Successful");
+}); // Esta parte no es muy importante en nuestro caso (solo lo puse por si acaso)
+ 
+app.get("/getdata", (req, res) => {
+    var data = { // this is the data you're sending back during the GET request
+        action: "say",
+        text: "hello"
     }
-
-    var options = {
-        method: 'POST',
-        uri: 'http://127.0.0.1:8080/postdata',
-        body: data,
-        json: true // Automatically stringifies the body to JSON
-    };
-    
-    var returndata;
-    var sendrequest = await request(options)
-    .then(function (parsedBody) {
-        console.log(parsedBody); // parsedBody contains the data sent back from the Flask server
-        returndata = parsedBody; // do something with this data, here I'm assigning it to a variable.
-    })
-    .catch(function (err) {
-        console.log(err);
-    });
-    
-    res.send(returndata);
+    res.status(200).json(data)
 });
+
 
 app.post('/save-command', function(req, res) {
     console.log(req.body);
@@ -57,4 +41,4 @@ app.post('/delete-command', function(req, res) {
 })
 
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`App listening on port ${port}!`))

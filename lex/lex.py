@@ -1,7 +1,23 @@
 from flask import Flask, render_template, request
-import requests, sys, json
+import requests, sys
 
 app = Flask(__name__)
+
+get = requests.get('http://127.0.0.1:8080/getdata') # GET request
+data = get.json()
+# process this JSON data and do something with it
+print(data)
+
+
+if data != "":
+    result = {"status": "SUCCESSFUL"}
+else:
+    result = {"status": "FAILED"}
+ 
+# now immediately sending a post request with new data
+post = requests.post('http://127.0.0.1:8080/postdata', json=result) # the POST request
+print(post.text)
+print(result)
 
 f = open("transpiled/test.py", "w+")
 for i in range(10):
@@ -14,11 +30,9 @@ def translation():
         "translated.html",
     )
 
-@app.route("/lex", methods = ['POST'])
+@app.route("/lex")
 def lex():
-    data = request.get_json()
-    print(data)
-    return json.dumps({"newdata":"hereisthenewdatayouwanttosend"})
+    return data
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")

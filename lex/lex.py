@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import requests, sys
+import requests, sys, json
 
 app = Flask(__name__)
 
@@ -14,9 +14,11 @@ def translation():
         "translated.html",
     )
 
-@app.route("/lex")
+@app.route("/lex", methods = ['POST'])
 def lex():
-    return "POST endpoint"
+    data = request.get_json()
+    print(data)
+    return json.dumps({"newdata":"hereisthenewdatayouwanttosend"})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")

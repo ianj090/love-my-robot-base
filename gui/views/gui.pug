@@ -1,19 +1,262 @@
+//- head
+//-     link(rel="stylesheet", href="styles/css/example.css")
+//-     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+//-     script(src="js/example.js")
+//-     script.
+//-         var cs = !{JSON.stringify(commands)}
+//- body
+//-     .main-div
+//-         h1 GUI
+//-         .input-container
+//-             span Command 
+//-             input#action(type="text")
+//-         .send-button-container
+//-             button.send Send
+//-         .names-container
+//-             ul
+//-                 each command in commands
+//-                     li#target #{command} 
+//-                         button.delete X
 head
-    link(rel="stylesheet", href="styles/css/example.css")
-    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
-    script(src="js/example.js")
-    script.
-        var cs = !{JSON.stringify(commands)}
-body
-    .main-div
-        h1 GUI
-        .input-container
-            span Command 
-            input#action(type="text")
-        .send-button-container
-            button.send Send
-        .names-container
-            ul
-                each command in commands
-                    li#target #{command} 
-                        button.delete X
+  title LOVEMYROBOT
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=100%, initial-scale=1.0')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js')
+  link(href='https://fonts.googleapis.com/css?family=Exo+2:400,600,700|Press+Start+2P&display=swap' rel='stylesheet')
+  style.
+    .lilkosmo{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    }
+    .navbar {
+    /* background-color: rgb(236, 236, 236);  */
+    background-image: url('https://i-love-png.com/images/grid-half-blue.png');
+    background-repeat: repeat;
+    min-height: 80px;
+    }
+    body {
+    background: linear-gradient(0deg, rgba(255,128,0,1) 0%, rgba(253,153,0,1) 25%, rgba(248,212,0,1) 100%);
+    background-repeat: no-repeat;
+    /* this will make the gradient cover the entire body */
+    background-attachment: fixed;
+    background-size: cover;
+    }
+    /* navbar-brand edits are to adjust the page title and logo in the navbar */
+    .navbar-brand
+    {
+    padding: 10px;
+    font-size: 50px;
+    display: block;
+    font-family: 'Exo 2', sans-serif;
+    color: #00A3DF;
+    }
+    .navbar-brand>img {
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto 40%;
+    }
+    /* adjust the  Big brain. Bigger personality.*/
+    .navbar-text{
+    position: absolute;
+    right: 10px;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Exo 2', sans-serif;
+    }
+    /* ---- side menu with the commands ----- */
+    /* Fixed sidenav, full height */
+    .sidenav {
+    position:absolute;
+    border-radius: 20px;
+    z-index: 1;
+    top:104px;
+    left: 30px;
+    background-color:  #111;
+    overflow-x: hidden;
+    padding: 8px 0;
+    width: 232px;
+    border-style: solid;
+    border-width: 6px;
+    border-color:#ffffff;
+    }
+    /* Style the sidenav links and the dropdown button */
+    .sidenav a, .dropdown-btn {
+    padding:  10px 10px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #a0a0a0;
+    width: 100%;
+    display: block;
+    background: none;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    font-family: 'Exo 2', sans-serif;
+    font-style:normal;
+    }
+    /* On mouse-over */
+    .sidenav a:hover, .dropdown-btn:hover {
+    color: #ffffff;
+    }
+    /* Add an active class to the active dropdown button */
+    .active {
+    background-color: rgb(204, 24, 24);
+    color: white;
+    }
+    /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+    .dropdown-container {
+    display: none;
+    background-color: #262626;
+    }
+    /*  down icon */
+    i {
+    border: solid orange;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    }
+    .downarrow {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    float: right;
+    width: 15px;
+    height: 15px;
+    }
+    /* container for to do list */
+    .ToDoList{
+    border-style: solid;
+    border-width: 6px;
+    border-color:#ffffff;
+    border-radius: 10px;
+    top:104px;
+    left: 286px;
+    width: 56%;
+    height: 80%;
+    position: fixed;
+    overflow:scroll;
+    background-image: url('https://i-love-png.com/images/grid-half-blue.png');
+    }
+    .ToDoListHeader{
+    border-style: none;
+    border-width: 3px;
+    border-bottom-style: double;
+    border-color:#6487e7;
+    border-radius: 5px;
+    font-weight: 600;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 26px;
+    text-anchor: middle;
+    top:104px;
+    left: 285px;
+    width: 56.1%;
+    position: fixed;
+    text-align: center;
+    vertical-align: top;
+    background-color:rgb(155, 190, 253);
+    color:rgb(255, 255, 255);
+    }
+    li{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 15px;
+    text-align: center;
+    color:#262626;
+    list-style-type:none;
+    padding: 8px;
+    }
+    .deletebutton{
+    color:#1a1919;
+    background: rgb(206, 89, 89);
+    border-radius: 5px;
+    text-align: center;
+    }
+    .submitbutton{
+    color:#1a1919;
+    background: rgb(104, 255, 210);
+    border-radius: 5px;
+    text-align: center;
+    position: absolute;
+    right: 6.2%;
+    bottom: 70%;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 23px;
+    width: 13%;
+    height: 10%;
+    border-style: outset;
+    border-width: 3PX;
+    }
+    .clearbutton{
+    color:#1a1919;
+    background: rgb(219, 77, 77);
+    border-radius: 5px;
+    text-align: center;
+    position: absolute;
+    right: 6.2%;
+    bottom: 53%;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 23px;
+    width: 13%;
+    height: 10%;
+    border-style: outset;
+    border-width: 3PX;
+    }
+nav.navbar.navbar-expand-sm.navbar-light
+  a.navbar-brand
+    span
+      img(src='https://img1.apk.tools/300/a/b/6/com.anki.cozmo.png' width='62' alt='')
+    strong My Robot Cozmo!
+  .container
+    span.navbar-text
+      | Big brain. Bigger personality.
+.sidenav
+  button.dropdown-btn(style='text-align: center')
+    | ACTIONS 
+    i.downarrow
+  .dropdown-container
+    a(href='#') SAY
+    a(href='#') MATH
+    a(href='#') YES
+  button.dropdown-btn
+    | DRIVE 
+    i.downarrow
+  .dropdown-container
+    a(href='#') Link 1
+    a(href='#') Link 2
+    a(href='#') Link 3
+  button.dropdown-btn
+    | ANIMATIONS 
+    i.downarrow
+  .dropdown-container
+    a(href='#') Link 1
+    a(href='#') Link 2
+    a(href='#') Link 3
+.ToDoList
+  .ToDoListHeader P R O G R A M__M Y__C O Z M O 
+  hr
+  ul
+    li
+      | SAY HI
+      button.deletebutton(style='text-align: center')  x 
+button.submitbutton
+  strong EXECUTE
+button.clearbutton
+  strong CLEAR
+img.lilkosmo(src='https://www.tokyoacademics.com/wp-content/uploads/2019/03/Cozmo-A-400x295.png' width='340' height='300' alt='')
+script.
+  /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+  var dropdown = document.getElementsByClassName("dropdown-btn");
+  var i;
+  for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+  }

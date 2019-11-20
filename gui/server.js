@@ -10,7 +10,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-let commands = ["SAY", "MOVE"]
+let commands = []
 
 app.get('/', (req, res) => res.render('gui', {commands}))
 
@@ -38,6 +38,15 @@ app.post('/delete-command', function(req, res) {
     console.log(req.body);
     commands = commands.filter(e => e !== req.body.command);
     res.json({message:"Command deleted"})
+})
+app.post('/delete-all', function(req, res) {
+    console.log(req.body);
+    let some = req.body + '';
+    var block = some.split(" ");
+    for (item in block) {
+        commands = commands.filter(e => e !== req.body.command);
+    }
+    res.json({message:"Commands deleted"})
 })
 
 

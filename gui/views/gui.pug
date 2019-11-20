@@ -24,6 +24,7 @@ head
   link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css')
   script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
   script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js')
+  script(src="js/example.js")
   link(href='https://fonts.googleapis.com/css?family=Exo+2:400,600,700|Press+Start+2P&display=swap' rel='stylesheet')
   style.
     .lilkosmo{
@@ -216,31 +217,31 @@ nav.navbar.navbar-expand-sm.navbar-light
     | ACTIONS 
     i.downarrow
   .dropdown-container
-    a(href='#') SAY
-    a(href='#') MATH
-    a(href='#') YES
+    a.addbutton#action SAY
+    a.addbutton#action MATH
+    a.addbutton#action YES
   button.dropdown-btn
-    | DRIVE 
+    | MOVEMENT 
     i.downarrow
   .dropdown-container
-    a(href='#') Link 1
-    a(href='#') Link 2
-    a(href='#') Link 3
+    a.addbutton#action DRIVE
+    a.addbutton#action TURN
+    a.addbutton#action LIFT
   button.dropdown-btn
     | ANIMATIONS 
     i.downarrow
   .dropdown-container
-    a(href='#') Link 1
-    a(href='#') Link 2
-    a(href='#') Link 3
+    a.addbutton#action LIGHT
+    a.addbutton#action CUBE
+    a.addbutton#action PICKUP
 .ToDoList
   .ToDoListHeader P R O G R A M__M Y__C O Z M O 
   hr
   ul
-    li
-      | SAY HI
-      button.deletebutton(style='text-align: center')  x 
-button.submitbutton
+    each command in commands
+      li.target#target #{command}
+        button.deletebutton(style='text-align: center')  x 
+button.submitbutton 
   strong EXECUTE
 button.clearbutton
   strong CLEAR

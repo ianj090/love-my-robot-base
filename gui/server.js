@@ -12,7 +12,6 @@ app.use(bodyParser.urlencoded({ extended: false })); // declares encoding exampl
 app.use(bodyParser.json()); // declares to use json FORMAT
 
 let commands = []
-// let texts = []
 
 app.get('/postdata', async function (req, res) {
     var data = { commands }

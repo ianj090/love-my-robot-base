@@ -36,10 +36,21 @@ $(document).ready(function() {
 // TODAVIA NO ESTA TERMINADO
 $(document).ready(function() {
     $('.clearbutton').click(function() {
-        let Commands = $(".target").text()
-        $(".target").empty();
-        console.log("Commands")
-        $.post('/delete-all', {command:Commands}, function(data, status) {
+        var list = document.getElementById("list").getElementsByTagName("li");
+        for (item in list) {
+            item.remove()
+            $.post('/delete-command', {command:list}, function(data, status) {
+                console.log(`${data.message} and status is ${status}`)
+                // alert(data.message)
+            })
+        }
+    })
+})
+
+// TODAVIA NO ESTA TERMINADO
+$(document).ready(function() {
+    $('.submitbutton').click(function() {
+        $.post('/send_data', {command:list}, function(data, status) {
             console.log(`${data.message} and status is ${status}`)
             // alert(data.message)
         })

@@ -4,8 +4,27 @@ $(document).ready(function() {
         let newCommand = $(this).closest('#action').clone().children().remove().end().text()
         console.log(newCommand);
         if (newCommand && newCommand.length > 0) {
-            console.log('yeah')
             $.post('/save-command', {command:newCommand}, function(data, status) {
+                console.log(`${data.message} and status is ${status}`)
+                // alert(data.message)
+                setTimeout(function() {
+                    location.reload();
+                }, 100);
+            })
+        }
+        else {
+            console.log("error")
+        }
+    })
+})
+
+// YA FUNCIONA
+$(document).ready(function() {
+    $('.submittocommandlist').click(function() {
+        let newText = $('#inlineFormInput.form-control.mb-2').val()
+        console.log(newText);
+        if (newText && newText.length > 0) {
+            $.post('/save-text', {text:newText}, function(data, status) {
                 console.log(`${data.message} and status is ${status}`)
                 // alert(data.message)
                 setTimeout(function() {
@@ -24,7 +43,6 @@ $(document).ready(function() {
     $('.deletebutton').click(function() {
         let someCommand = $(this).closest('#target').clone().children().remove().end().text()
         let Command = someCommand//.replace(" ", "")
-        console.log(Command);
         $(this).closest('#target').remove()
         $.post('/delete-command', {command:Command}, function(data, status) {
             console.log(`${data.message} and status is ${status}`)

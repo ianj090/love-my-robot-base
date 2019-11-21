@@ -12,10 +12,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 let commands = []
-let text =["HI", "RED"]
+let texts = []
 
 app.get('/postdata', async function (req, res) {
-    var data = {commands, text}
+    var data = {commands, texts}
  
     var options = {
         method: 'POST',
@@ -38,7 +38,7 @@ app.get('/postdata', async function (req, res) {
     
 });
 
-app.get('/', (req, res) => res.render('gui', {commands}))   
+app.get('/', (req, res) => res.render('gui', {commands, texts}))   
 
 
 app.post('/save-command', function(req, res) {
@@ -55,6 +55,12 @@ app.post('/delete-all', function(req, res) {
     console.log(req.body);
     commands = []
     res.json({message:"Commands deleted"})
+})
+
+app.post('/save-text', function(req, res) {
+    console.log(req.body);
+    texts.push(req.body.text);
+    res.json({message:"Text added"})
 })
 
 

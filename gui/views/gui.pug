@@ -204,6 +204,23 @@ head
     border-style: outset;
     border-width: 3PX;
     }
+    .md-form.md-form.input-group{
+        text-align: left;
+        width: 68%;
+        
+    }
+    .submittocommandlist{
+        width:130px;
+        color:#1a1919;
+        background: rgb(92, 183, 243);
+        border-radius: 5px;
+        font-family: 'Exo 2', sans-serif;
+        font-size: 18px;
+        height: 35px;
+        border-style: outset;
+        border-width: 3PX;
+
+    }
 nav.navbar.navbar-expand-sm.navbar-light
   a.navbar-brand
     span
@@ -238,6 +255,11 @@ nav.navbar.navbar-expand-sm.navbar-light
   .ToDoListHeader P R O G R A M__M Y__C O Z M O 
   hr
   ul(id="list")
+    form.form-inline
+    .md-form.input-group
+      input#inlineFormInput.form-control.mb-2(type='text' placeholder='CHOOSE A COMMAND FROM THE OPTIONS ON YOUR LEFT')
+      // submit button to code pile
+      button.submittocommandlist(type='submit') Submit
     each command in commands
       li.target#target #{command}
         button.deletebutton(style='text-align: center')  x 

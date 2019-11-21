@@ -36,24 +36,30 @@ $(document).ready(function() {
 // TODAVIA NO ESTA TERMINADO
 $(document).ready(function() {
     $('.clearbutton').click(function() {
-        var list = document.getElementById("list").getElementsByTagName("li");
-        for (item in list) {
-            item.remove()
-            $.post('/delete-command', {command:list}, function(data, status) {
-                console.log(`${data.message} and status is ${status}`)
-                // alert(data.message)
-            })
+        var e = document.querySelector("#list"); 
+        
+        //e.firstElementChild can be used. 
+        var child = e.lastElementChild;  
+        while (child) { 
+            e.removeChild(child); 
+            child = e.lastElementChild; 
         }
-    })
-})
-
-// TODAVIA NO ESTA TERMINADO
-$(document).ready(function() {
-    $('.submitbutton').click(function() {
-        $.post('/send_data', {command:list}, function(data, status) {
+        $.post('/delete-all', function(data, status) {
             console.log(`${data.message} and status is ${status}`)
             // alert(data.message)
         })
+    })
+})
+
+// TERMINADO
+$(document).ready(function() {
+    $('.submitbutton').click(function() {
+        window.location.assign("/postdata");
+        setTimeout(function() {
+            window.location.assign("/"); // Not quite right yet.
+        }, 5);
+        // window.location.assign("/");
+        // location.reload();
     })
 })
 

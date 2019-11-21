@@ -264,6 +264,10 @@ nav.navbar.navbar-expand-sm.navbar-light
     each command in commands
       li.target#target #{command}
         button.deletebutton(style='text-align: center')  x 
+  ul(id="list")
+    each text in texts
+      li.target#target #{text}
+        button.deletebutton(style='text-align: center')  x 
 button.submitbutton
   strong EXECUTE
 button.clearbutton

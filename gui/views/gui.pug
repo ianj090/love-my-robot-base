@@ -254,12 +254,13 @@ nav.navbar.navbar-expand-sm.navbar-light
 .ToDoList
   .ToDoListHeader P R O G R A M__M Y__C O Z M O 
   hr
-  ul(id="list")
+  ul 
     form.form-inline
-      .md-form.input-group
-        input#inlineFormInput.form-control.mb-2(type='text' placeholder='CHOOSE A COMMAND FROM THE OPTIONS ON YOUR LEFT')
-      // submit button to code pile
-      button.submittocommandlist(type='submit') Submit
+        .md-form.input-group
+          input#inlineFormInput.form-control.mb-2(type='text' placeholder='CHOOSE A COMMAND FROM THE OPTIONS ON YOUR LEFT')
+        // submit button to code pile
+        button.submittocommandlist(type='submit') Submit
+  ul(id="list")
     each command in commands
       li.target#target #{command}
         button.deletebutton(style='text-align: center')  x 

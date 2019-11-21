@@ -33,7 +33,7 @@ $(document).ready(function() {
     })
 })
 
-// TODAVIA NO ESTA TERMINADO
+// TERMINADO
 $(document).ready(function() {
     $('.clearbutton').click(function() {
         var e = document.querySelector("#list"); 

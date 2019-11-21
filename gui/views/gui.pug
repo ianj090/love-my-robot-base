@@ -237,11 +237,11 @@ nav.navbar.navbar-expand-sm.navbar-light
 .ToDoList
   .ToDoListHeader P R O G R A M__M Y__C O Z M O 
   hr
-  ul
+  ul(id="list")
     each command in commands
       li.target#target #{command}
         button.deletebutton(style='text-align: center')  x 
-button.submitbutton 
+button.submitbutton
   strong EXECUTE
 button.clearbutton
   strong CLEAR

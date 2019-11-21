@@ -14,7 +14,7 @@ def translation():
         "translated.html",
     )
 
-@app.route("/lex", methods=["POST"])
+@app.route("/lex", methods=["POST"]) # solo va a ACEPTAR post
 def lex(): # Todas las operaciones van a pasar aqui!!!
     data = request.get_json()
     print(data)
@@ -24,3 +24,4 @@ def lex(): # Todas las operaciones van a pasar aqui!!!
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
+ 

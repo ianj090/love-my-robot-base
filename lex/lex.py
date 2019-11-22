@@ -9,6 +9,7 @@ app = Flask(__name__)
 # f.close()
 
 time_stamp = ""
+translatedcode = ""
 
 
 @app.route("/")

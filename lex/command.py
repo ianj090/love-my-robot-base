@@ -21,8 +21,8 @@ D = {"commands": ["I love you",
 
 
 
-class run_cozmo():
-    def __init__(self, command):
+class AttributeSayCozmo():
+    def __init__(self, command,):
         self.command = command
     
     def SAY(self):
@@ -55,7 +55,8 @@ class run_cozmo():
         def cozmo_program(robot: cozmo.robot.Robot):
             robot.say_text(str(self.command)).wait_for_completed() 
         cozmo.run_program(cozmo_program)
-        
+
+class 
     def DRIVE(self):
         '''
         forward (MOVE 150 50)
@@ -64,9 +65,10 @@ class run_cozmo():
         backward a little (MOVE -75 50)
         '''
         def cozmo_program(robot: cozmo.robot.Robot):
-            robot.say_text(str(self.command)).wait_for_completed() 
+            # Drive forwards for 150 millimeters at 50 millimeters-per-second.
+            robot.drive_straight(distance_mm(150), speed_mmps(50)).wait_for_completed()
         cozmo.run_program(cozmo_program)
-        
+
     def TURN(self):
         '''
         right (90 100)

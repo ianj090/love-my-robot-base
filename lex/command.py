@@ -1,5 +1,6 @@
 import cozmo
 from cozmo.util import degrees, distance_mm, speed_mmps
+import time
 
 D = {"commands": ["I love you",
                   "Hello World",
@@ -55,6 +56,40 @@ class run_cozmo():
         def cozmo_program(robot: cozmo.robot.Robot):
             # Drive forwards for 150 millimeters at 50 millimeters-per-second.
             robot.set_lift_height(number1).wait_for_completed()
+        cozmo.run_program(cozmo_program)
+
+    def LIGHT(self, color):
+        def cozmo_program(robot: cozmo.robot.Robot):
+            cube1 = robot.world.get_light_cube(1) #LightCube1Id  # looks like a paperclip
+            cube2 = robot.world.get_light_cube(2)  # looks like a lamp / heart
+            cube3 = robot.world.get_light_cube(3)  # looks like the letters 'ab' over 'T'
+
+            if cube1 is not None:
+                cube1.set_lights(color)
+            else:
+                cozmo.logger.warning("Cozmo is not connected to a LightCube1Id cube - check the battery.")
+
+            if cube2 is not None:
+                cube2.set_lights(color)
+            else:
+                cozmo.logger.warning("Cozmo is not connected to a LightCube2Id cube - check the battery.")
+
+            if cube3 is not None:
+                cube3.set_lights(color)
+            else:
+                cozmo.logger.warning("Cozmo is not connected to a LightCube3Id cube - check the battery.")
+
+            # Keep the lights on for 10 seconds until the program exits
+            time.sleep(10)
+
+
+        cozmo.run_program(cozmo_program)
+
+
+    def WHEELIE(self, number):
+        def cozmo_program(robot: cozmo.robot.Robot):
+            cube1 = robot.world.get_light_cube(number)  # looks like a paperclip
+            robot.pop_a_wheelie(cube1).wait_for_completed()
         cozmo.run_program(cozmo_program)
 
 # yeah
@@ -247,11 +282,39 @@ def interpret(D):
             I = run_cozmo(None)
             I.LIFT(height)
 
-    # # LIGHT
-    #     elif item == 'LIFT 1':
-    #         height = 1.0
-    #         I = run_cozmo(None)
-    #         I.LIFT(height)
+    # LIGHT
+        elif item == 'Green':
+            cubes_colors = cozmo.lights.green_light
+            I = run_cozmo()
+            I.LIFT(cubes_colors)
+        elif item == 'Red':
+            cubes_colors = cozmo.lights.red_light
+            I = run_cozmo()
+            I.LIFT(cubes_colors)
+        elif item == 'Blue':
+            cubes_colors = cozmo.lights.blue_light
+            I = run_cozmo()
+            I.LIFT(cubes_colors)
+    
+    # WHEELIE
+        elif item == 'WHEELIE 1':
+            cube_number = 1
+            I = run_cozmo()
+            I.WHEELIE(cube_number)
+        elif item == 'WHEELIE 2':
+            cube_number = 2
+            I = run_cozmo()
+            I.WHEELIE(cube_number)
+        elif item == 'WHEELIE 3':
+            cube_number = 3
+            I = run_cozmo()
+            I.WHEELIE(cube_number)
+    
+    # CUBE
+        elif item == 'Circles':
+            cube_number = 1
+            I = run_cozmo()
+            I.CUBE(cube_number)
 
 
 if __name__ == "__main__":

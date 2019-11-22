@@ -7,27 +7,13 @@ D = {"commands": ["I love you",
                   ]}
 
 
-# variable = ""
-
-# def run_cozmo(variable):
-#     def cozmo_say_hello(): # robot: cozmo.robot.Robot
-#         variable =  variable ** 2
-#         print(variable)
-#         # robot.say_text(variable).wait_for_completed()
-#     # cozmo.run_program(cozmo_program)
-#     cozmo_say_hello()
-
-# run_cozmo(48)
-
-
-
-class AttributeSayCozmo():
+class run_cozmo():
     def __init__(self, command,):
         self.command = command
-    
+
     def SAY(self):
         def cozmo_program(robot: cozmo.robot.Robot):
-            robot.say_text(str(self.command)).wait_for_completed() 
+            robot.say_text(str(self.command)).wait_for_completed()
         cozmo.run_program(cozmo_program)
         code = '''
         def SAY(s):
@@ -49,215 +35,184 @@ class AttributeSayCozmo():
         10000000-99999999
         '''
         def cozmo_program(robot: cozmo.robot.Robot):
-            robot.say_text(str(self.command)).wait_for_completed() 
+            robot.say_text(str(self.command)).wait_for_completed()
         cozmo.run_program(cozmo_program)
-        
-    
+
+    def movement(self, num1, num2):
+        def cozmo_program(robot: cozmo.robot.Robot):
+            # Drive forwards for 150 millimeters at 50 millimeters-per-second.
+            robot.drive_straight(distance_mm(
+                num1), speed_mmps(num2)).wait_for_completed()
+        cozmo.run_program(cozmo_program)
 
 
 def interpret(D):
-    inner_list = []
+    L = []  # para las variables
     try:
         inner_list = D["commands"]
     except:
         inner_list = None
 
     for item in inner_list:
-    # SAY
+        # SAY
         if item == 'Hello World':
             I = run_cozmo(item)
             temp = I.SAY()
-            L.append(temp) 
+            L.append(temp)
 
         elif item == 'I love you':
             I = run_cozmo(item)
-            I.SAY()
+            temp = I.SAY()
+            L.append(temp)
 
         elif item == 'How are you?':
             I = run_cozmo(item)
-            I.SAY()
+            temp = I.SAY()
+            L.append(temp)
 
         elif item == 'Sorry':
             I = run_cozmo(item)
-            I.SAY()
-    
+            temp = I.SAY()
+            L.append(temp)
+
         elif item == 'You are funny!':
             I = run_cozmo(item)
-            I.SAY()
+            temp = I.SAY()
+            L.append(temp)
 
         elif item == 'Wanna be friends?':
             I = run_cozmo(item)
-            I.SAY()
+            temp = I.SAY()
+            L.append(temp)
 
         elif item == 'No':
             I = run_cozmo(item)
-            I.SAY()
+            temp = I.SAY()
+            L.append(temp)
 
         elif item == 'What’s your name?':
             I = run_cozmo(item)
-            I.SAY()
+            temp = I.SAY()
+            L.append(temp)
 
         elif item == 'AHHH! Humans!':
             I = run_cozmo(item)
-            I.SAY()
+            temp = I.SAY()
+            L.append(temp)
 
         elif item == 'You’ll never catch me!':
             I = run_cozmo(item)
-            I.SAY()
+            temp = I.SAY()
+            L.append(temp)
 
         elif item == 'Thank You':
             I = run_cozmo(item)
-            I.SAY()
+            temp = I.SAY()
+            L.append(temp)
 
         elif item == 'You are ugly':
             I = run_cozmo(item)
-            I.SAY()
+            temp = I.SAY()
+            L.append(temp)
 
         elif item == 'You are Beautiful':
             I = run_cozmo(item)
-            I.SAY()
+            temp = I.SAY()
+            L.append(temp)
 
         elif item == 'Goodbye':
             I = run_cozmo(item)
-            I.SAY()
+            temp = I.SAY()
+            L.append(temp)
 
         elif item == 'Eureka':
             I = run_cozmo(item)
-            I.SAY()
-
+            temp = I.SAY()
+            L.append(temp)
 
     # MATH
-        elif item == '10+10'
+        elif item == '10+10':
             I = run_cozmo(20)
             I.MATH()
-            
-        elif item == '100/5'
+
+        elif item == '100/5':
             I = run_cozmo(20)
             I.MATH()
-            
-        elif item == '(5/2) * 4'
+
+        elif item == '(5/2) * 4':
             I = run_cozmo(10)
             I.MATH()
-        
-        elif item == '239/140*139+2334-234'
+
+        elif item == '239/140*139+2334-234':
             I = run_cozmo(0.01)
             I.MATH()
-        
-        elif item == '(2+45-90)20'
+
+        elif item == '(2+45-90)20':
             I = run_cozmo(-860)
             I.MATH()
-        
-        elif item == '40*34/67'
+
+        elif item == '40*34/67':
             I = run_cozmo(20.29)
             I.MATH()
-        
-        elif item == '200-100'
+
+        elif item == '200-100':
             I = run_cozmo(100)
             I.MATH()
-        
-        elif item == '10000000-99999999'
+
+        elif item == '10000000-99999999':
             I = run_cozmo(1)
             I.MATH()
 
-    
     # COUNT
         elif item == '5':
-            for i in range(0,5):
-                I = run_cozmo(i)
+            for a in range(0, 5):
+                I = run_cozmo(a)
                 I.SAY()
-		elif item == '7':
-            
-                I = run_cozmo(item)
-                I.COUNT()
-		elif item == '8':
-            I = run_cozmo(item)
-            I.COUNT()
-		elif item == '10':
-            I = run_cozmo(item)
-            I.COUNT()
-    
+        elif item == '7':
+            for b in range(0, 7):
+                I = run_cozmo(b)
+                I.SAY()
+
+        elif item == '8':
+            for c in range(0, 8):
+                I = run_cozmo(c)
+                I.SAY()
+
+        elif item == '10':
+            for d in range(0, 10):
+                I = run_cozmo(d)
+                I.SAY()
+
     # YES
         elif item == 'YES':
             I = run_cozmo(item)
-            I.YES()
+            I.SAY()
 
     # DRIVE
         elif item == 'forward':
             first = 150
             second = 50
-            I = run_cozmo(first, second)
-            I.YES()
+            I = run_cozmo(None)
+            I.movement(first, second)
         elif item == 'forward a little':
             first = 75
             second = 50
-            I = run_cozmo(first, second)
-            I.YES()
+            I = run_cozmo(None)
+            I.movement(first, second)
         elif item == 'backward':
             first = -150
             second = 50
-            I = run_cozmo(first, second)
-            I.YES()
+            I = run_cozmo(None)
+            I.movement(first, second)
         elif item == 'backward a little':
             first = -75
             second = 50
-            I = run_cozmo(first, second)
-            I.YES()
-    
+            I = run_cozmo(None)
+            I.movement(first, second)
 
-    
+
 if __name__ == "__main__":
     interpret(D)
-
-# MATH 
-#   "10+10"
-#   "100/5"
-#   "(5/2) * 4"
-#   "23924/12340*139843+2334-234"
-#   "(2+45-90)20"
-#   "40*34/67"
-#   "200-100"
-#   "10000000-99999999"
-# COUNT 
-# 5
-# 10
-# 50
-# 100
-# YES 
-# >>>>>(MOVEMENT)
-# DRIVE
-#   forward (MOVE 150 50)
-#   forward a little (MOVE 75 50)
-#   backward (MOVE -150,50)
-#   backward a little (MOVE -75 50)
-# TURN
-# 	right (90 100)
-# 	left (-90 100)
-# 	turn back (-180 100)
-# LIFT
-# 	1
-# 	0.8
-# 	0.5
-# >>>>>(ANIMATIONS)
-# LIGHT
-# 	Green
-# 	red
-# 	blue
-# WHEELIE
-# 1
-# 2
-# 3
-# CUBE
-# circles
-# diamonds
-# triangles
-# PICKUP
-# 1
-# 2
-# 3
-# DROP
-
-        
-
 
 
 # import cozmo
@@ -274,7 +229,7 @@ if __name__ == "__main__":
 
 #     global variable
 #     for item in inner_list:
-#         # SAY 
+#         # SAY
 #         variable = item
 #         print(variable)
 #         cozmo.run_program(cozmo_program)
@@ -283,6 +238,4 @@ if __name__ == "__main__":
 # def cozmo_program(robot: cozmo.robot.Robot):
 #     robot.say_text(variable).wait_for_completed()
 
-# interpret(D)      
-
-
+# interpret(D)

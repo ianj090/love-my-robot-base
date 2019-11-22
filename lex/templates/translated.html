@@ -1,26 +1,87 @@
+{%extends 'layout.html'%}
+{% block body %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>LOVEMYROBOT</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=100%, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  </head>
-  <body>
+    <link href="https://fonts.googleapis.com/css?family=Exo+2:400,600,700|Inconsolata&display=swap" rel="stylesheet">    <style>
+            /* containers */
+        .containerTranslated_and_Lex{
+            border-style: solid;
+            border-width: 6px;
+            border-color:#ffffff;
+            border-radius: 10px;
+            top:97px;
+            left: 10%;
+            width: 78%;
+            height: 77%;
+            position: fixed;
+            overflow:scroll;
+            background-color: rgb(58, 57, 71);
+            
+            
+        }
+        .containerHeader{
+            border-style: none;
+            border-width: 3px;
+            border-bottom-style: double;
+            border-color:#6487e7;
+            border-radius: 5px;
+            font-weight: 600;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 20px;
+            top:97px;
+            left: 10%;
+            width: 78.1%;
+            position: fixed;
+            text-align: center;
+            vertical-align: top;
+            background-color:rgb(155, 190, 253);
+            color:rgb(0, 26, 82);
+            
+            
+        }
+        .timestamp{
+            border-width: 4px;
+            border-style: double;
+            border-color:#6487e7;
+            border-radius: 4px;
+            font-weight: 600;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 17.5px;
+            top:91.9%;
+            right: 12%;
+            position: fixed;
+            text-align: center;
+            vertical-align: top;
+            background-color:rgb(155, 190, 253);
+            color:rgb(0, 26, 82);
+            
+            
+        }
+        p{  
+            
+            font-family: 'Inconsolata', monospace;
+            font-size: 18px;
+            color:aqua;
+        }
+    </style>
+    </head>
+  <body> 
     </div>
-    <nav class="navbar navbar-inverse navbar-expand-sm">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand">LEX</a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="http://127.0.0.1:5000/">Translated Code</a></li>
-          <li><a href="http://127.0.0.1:5000/lex">LEX</a></li>
-        </ul>
-      </div>
-    </nav>
-    <h3>Translated Python Code</h3>
-    <h7>time of request placeholder</h7>
+    
+    <div class="containerTranslated_and_Lex">
+        <div class="containerHeader">Translated Python Code</div>
+        <hr>
+        <p>codigo transpilado wuuuu</p>
+    </div>
+    <div class='timestamp'>Sun Nov  3 01:42:41 CST 2019</div>
+
   </body>
 </html>
+{% endblock %}

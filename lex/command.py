@@ -50,7 +50,8 @@ class run_cozmo():
     def DRIVE(self, num1, num2):
         def cozmo_program(robot: cozmo.robot.Robot):
             # Drive forwards for 150 millimeters at 50 millimeters-per-second.
-            robot.drive_straight(distance_mm(num1), speed_mmps(num2)).wait_for_completed()
+            robot.drive_straight(distance_mm(
+                num1), speed_mmps(num2)).wait_for_completed()
         cozmo.run_program(cozmo_program)
         code = '''
         def DRIVE(self, n1, n2):
@@ -58,9 +59,9 @@ class run_cozmo():
                 # Drive forwards for 150 millimeters at 50 millimeters-per-second.
                 robot.drive_straight(distance_mm({}), speed_mmps({})).wait_for_completed()
             cozmo.run_program(cozmo_program)
-        '''.format(num1,num2)
+        '''.format(num1, num2)
         return code
-    
+
     def TURN(self, var1):
         def cozmo_program(robot: cozmo.robot.Robot):
             # Drive forwards for 150 millimeters at 50 millimeters-per-second.
@@ -74,7 +75,7 @@ class run_cozmo():
             cozmo.run_program(cozmo_program)
         '''.format(var1)
         return code
-    
+
     def LIFT(self, number1):
         def cozmo_program(robot: cozmo.robot.Robot):
             # Drive forwards for 150 millimeters at 50 millimeters-per-second.
@@ -91,28 +92,32 @@ class run_cozmo():
 
     def LIGHT(self, color):
         def cozmo_program(robot: cozmo.robot.Robot):
-            cube1 = robot.world.get_light_cube(1) #LightCube1Id  # looks like a paperclip
+            # LightCube1Id  # looks like a paperclip
+            cube1 = robot.world.get_light_cube(1)
             cube2 = robot.world.get_light_cube(2)  # looks like a lamp / heart
-            cube3 = robot.world.get_light_cube(3)  # looks like the letters 'ab' over 'T'
+            # looks like the letters 'ab' over 'T'
+            cube3 = robot.world.get_light_cube(3)
 
             if cube1 is not None:
                 cube1.set_lights(color)
             else:
-                cozmo.logger.warning("Cozmo is not connected to a LightCube1Id cube - check the battery.")
+                cozmo.logger.warning(
+                    "Cozmo is not connected to a LightCube1Id cube - check the battery.")
 
             if cube2 is not None:
                 cube2.set_lights(color)
             else:
-                cozmo.logger.warning("Cozmo is not connected to a LightCube2Id cube - check the battery.")
+                cozmo.logger.warning(
+                    "Cozmo is not connected to a LightCube2Id cube - check the battery.")
 
             if cube3 is not None:
                 cube3.set_lights(color)
             else:
-                cozmo.logger.warning("Cozmo is not connected to a LightCube3Id cube - check the battery.")
+                cozmo.logger.warning(
+                    "Cozmo is not connected to a LightCube3Id cube - check the battery.")
 
             # Keep the lights on for 10 seconds until the program exits
             time.sleep(10)
-
 
         cozmo.run_program(cozmo_program)
         code = '''
@@ -145,10 +150,10 @@ class run_cozmo():
         '''.format(color)
         return code
 
-
     def WHEELIE(self, number):
         def cozmo_program(robot: cozmo.robot.Robot):
-            cube1 = robot.world.get_light_cube(number)  # looks like a paperclip
+            cube1 = robot.world.get_light_cube(
+                number)  # looks like a paperclip
             robot.pop_a_wheelie(cube1).wait_for_completed()
         cozmo.run_program(cozmo_program)
         code = '''
@@ -250,105 +255,133 @@ def interpret(D):
     # MATH
         elif item == '10+10':
             I = run_cozmo(20)
-            I.MATH()
+            temp = I.MATH()
+            L.append(temp)
 
         elif item == '100/5':
             I = run_cozmo(20)
-            I.MATH()
+            temp = I.MATH()
+            L.append(temp)
 
         elif item == '(5/2) * 4':
             I = run_cozmo(10)
-            I.MATH()
+            temp = I.MATH()
+            L.append(temp)
 
         elif item == '239/140*139+2334-234':
             I = run_cozmo(0.01)
-            I.MATH()
+            temp = I.MATH()
+            L.append(temp)
 
         elif item == '(2+45-90)20':
             I = run_cozmo(-860)
-            I.MATH()
+            temp = I.MATH()
+            L.append(temp)
 
         elif item == '40*34/67':
             I = run_cozmo(20.29)
-            I.MATH()
+            temp = I.MATH()
+            L.append(temp)
 
         elif item == '200-100':
             I = run_cozmo(100)
-            I.MATH()
+            temp = I.MATH()
+            L.append(temp)
 
         elif item == '10000000-99999999':
             I = run_cozmo(1)
-            I.MATH()
+            temp = I.MATH()
+            L.append(temp)
 
     # COUNT
         elif item == '5':
             for a in range(0, 5):
                 I = run_cozmo(a)
-                I.SAY()
+                temp = I.SAY()
+            L.append(temp)
+
         elif item == '10':
             for b in range(0, 10):
                 I = run_cozmo(b)
-                I.SAY()
+                temp = I.SAY()
+            L.append(temp)
 
         elif item == '15':
             for c in range(0, 8):
                 I = run_cozmo(c)
-                I.SAY()
+                temp = I.SAY()
+            L.append(temp)
 
     # YES
         elif item == 'YES':
             I = run_cozmo(item)
-            I.SAY()
-
+            temp = I.SAY()
+            L.append(temp)
     # DRIVE
         elif item == 'Forward':
             first = 150
             second = 50
             I = run_cozmo(None)
-            I.DRIVE(first, second)
+            temp = I.DRIVE(first, second)
+            L.append(temp)
+
         elif item == 'Forward a little':
             first = 75
             second = 50
             I = run_cozmo(None)
-            I.DRIVE(first, second)
+            temp = I.DRIVE(first, second)
+            L.append(temp)
+
         elif item == 'Backward':
             first = -150
             second = 50
             I = run_cozmo(None)
-            I.DRIVE(first, second)
+            temp = I.DRIVE(first, second)
+            L.append(temp)
+
         elif item == 'Backward a little':
             first = -75
             second = 50
             I = run_cozmo(None)
-            I.DRIVE(first, second)
-
+            temp = I.DRIVE(first, second)
+            L.append(temp)
     # TURN
         elif item == 'Right':
             degree = 90
             I = run_cozmo(None)
-            I.TURN(degree)
+            temp = I.TURN(degree)
+            L.append(temp)
+
         elif item == 'Left':
             degree = -90
             I = run_cozmo(None)
-            I.TURN(degree)
+            temp = I.TURN(degree)
+            L.append(temp)
+
         elif item == 'Turn back':
             degree = -180
             I = run_cozmo(None)
-            I.TURN(degree)
+            temp = I.TURN(degree)
+            L.append(temp)
 
     # LIFT
         elif item == 'LIFT 1':
             height = 1.0
             I = run_cozmo(None)
-            I.LIFT(height)
+            temp = I.LIFT(height)
+            L.append(temp)
+
         elif item == 'LIFT 0.8':
             height = 0.8
             I = run_cozmo(None)
-            I.LIFT(height)
+            temp = I.LIFT(height)
+            L.append(temp)
+
         elif item == 'LIFT 0.5':
             height = 0.5
             I = run_cozmo(None)
-            I.LIFT(height)
+            temp = I.LIFT(height)
+            L.append(temp)
 
     # # LIGHT
     #     elif item == 'Green':
@@ -363,26 +396,28 @@ def interpret(D):
     #         cubes_colors = cozmo.lights.blue_light
     #         I = run_cozmo()
     #         I.LIFT(cubes_colors)
-    
-    # WHEELIE
-        elif item == 'WHEELIE 1':
-            cube_number = 1
-            I = run_cozmo()
-            I.WHEELIE(cube_number)
-        elif item == 'WHEELIE 2':
-            cube_number = 2
-            I = run_cozmo()
-            I.WHEELIE(cube_number)
-        elif item == 'WHEELIE 3':
-            cube_number = 3
-            I = run_cozmo()
-            I.WHEELIE(cube_number)
-    
+
+    # # WHEELIE
+    #     elif item == 'WHEELIE 1':
+    #         cube_number = 1
+    #         I = run_cozmo()
+    #         I.WHEELIE(cube_number)
+    #     elif item == 'WHEELIE 2':
+    #         cube_number = 2
+    #         I = run_cozmo()
+    #         I.WHEELIE(cube_number)
+    #     elif item == 'WHEELIE 3':
+    #         cube_number = 3
+    #         I = run_cozmo()
+    #         I.WHEELIE(cube_number)
+
     # CUBE
         elif item == 'Circles':
             cube_number = 1
             I = run_cozmo()
-            I.CUBE(cube_number)
+            temp = I.CUBE(cube_number)
+            L.append(temp)
+    return L
 
 
 if __name__ == "__main__":

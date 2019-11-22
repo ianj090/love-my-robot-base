@@ -1,14 +1,14 @@
-version: "3.7"
+version: "3"
 
 services:
     gui:
-        image: yourimagename/gui
+        image: latest:node
         build:
             context: gui/
         ports:
         - 8080:8080
     lex:
-        image: yourimagename/lex
+        image: latest:lex
         build:
             context: lex
         ports:

@@ -25,8 +25,6 @@ app.get('/postdata', async function (req, res) {
 
     const request_timestamp = month + " " + date + " " + hours+":"+minutes+":"+seconds + " " + year
 
-    let lmr = commands;
-    
     var data = { request_timestamp, lmr }
 
     var options = {
@@ -65,7 +63,6 @@ app.post('/save-command', function (req, res) { // metodos de app, "en la pagina
 app.post('/delete-command', function (req, res) { // solo funciona cuando se accede /save command, 
     console.log(req.body);
     commands = commands.filter(e => e !== req.body.command); // filter es BUSCA Y QUITA CIERTA VARIABLE, regresa el mensaje de command deleted.
-    lmr = commands
     res.json({ message: "Command deleted" });
 })
 

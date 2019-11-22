@@ -28,22 +28,23 @@ head
   link(href='https://fonts.googleapis.com/css?family=Exo+2:400,600,700|Press+Start+2P&display=swap' rel='stylesheet')
   style.
     .lilkosmo{
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
     }
-    .navbar {
+    .navbar { 
     /* background-color: rgb(236, 236, 236);  */
     background-image: url('https://i-love-png.com/images/grid-half-blue.png');
     background-repeat: repeat;
     min-height: 80px;
     }
     body {
-    background: linear-gradient(0deg, rgba(255,128,0,1) 0%, rgba(253,153,0,1) 25%, rgba(248,212,0,1) 100%);
-    background-repeat: no-repeat;
-    /* this will make the gradient cover the entire body */
-    background-attachment: fixed;
-    background-size: cover;
+        background: linear-gradient(0deg, rgba(255,128,0,1) 0%, rgba(253,153,0,1) 25%, rgba(248,212,0,1) 100%);
+        background-repeat: no-repeat;
+        /* this will make the gradient cover the entire body */
+        background-attachment: fixed; 
+        background-size: cover;
+
     }
     /* navbar-brand edits are to adjust the page title and logo in the navbar */
     .navbar-brand
@@ -62,36 +63,39 @@ head
     }
     /* adjust the  Big brain. Bigger personality.*/
     .navbar-text{
-    position: absolute;
-    right: 10px;
-    padding: 10px;
-    font-size: 20px;
-    font-family: 'Exo 2', sans-serif;
+        position: absolute;
+        right: 10px;
+        padding: 10px;
+        font-size: 20px;
+        font-family: 'Exo 2', sans-serif;
     }
     /* ---- side menu with the commands ----- */
-    /* Fixed sidenav, full height */
+        /* Fixed sidenav, full height */
     .sidenav {
-    position:absolute;
-    border-radius: 20px;
-    z-index: 1;
-    top:104px;
-    left: 30px;
-    background-color:  #111;
-    overflow-x: hidden;
-    padding: 8px 0;
-    width: 232px;
-    border-style: solid;
-    border-width: 6px;
-    border-color:#ffffff;
+        position:absolute;
+        border-radius: 20px;
+        z-index: 1;
+        top:104px;
+        left: 30px;
+        background-color:  #111;
+        overflow-x: hidden;
+        padding: 8px 0;
+        width: 232px;
+        border-style: solid;
+        border-width: 6px;
+        border-color:#ffffff;
+        
     }
+
     /* Style the sidenav links and the dropdown button */
     .sidenav a, .dropdown-btn {
     padding:  10px 10px 16px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 18px;
     color: #a0a0a0;
     width: 100%;
     display: block;
+
     background: none;
     cursor: pointer;
     outline: none;
@@ -99,20 +103,24 @@ head
     font-family: 'Exo 2', sans-serif;
     font-style:normal;
     }
+
     /* On mouse-over */
     .sidenav a:hover, .dropdown-btn:hover {
     color: #ffffff;
     }
+
     /* Add an active class to the active dropdown button */
     .active {
     background-color: rgb(204, 24, 24);
     color: white;
     }
+
     /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
     .dropdown-container {
     display: none;
     background-color: #262626;
     }
+
     /*  down icon */
     i {
     border: solid orange;
@@ -136,7 +144,7 @@ head
     top:104px;
     left: 286px;
     width: 56%;
-    height: 80%;
+    height: 81%;
     position: fixed;
     overflow:scroll;
     background-image: url('https://i-love-png.com/images/grid-half-blue.png');
@@ -220,6 +228,10 @@ head
         border-style: outset;
         border-width: 3PX;
 
+    }
+    .nondropdown-btn{
+        background-color: #292727;
+        width:100%;
     }
 nav.navbar.navbar-expand-sm.navbar-light
   a.navbar-brand

@@ -63,7 +63,7 @@ $(document).ready(function () {
         window.location.assign("/postdata");
         setTimeout(function () {
             window.location.assign("/"); // Not quite right yet.
-        }, 5); // 5 es el tiempo estimado que necesitan los dos scripts para poder ejecutar eso.
+        }, 10); // 5 es el tiempo estimado que necesitan los dos scripts para poder ejecutar eso.
         // window.location.assign("/");
         // location.reload();
     })

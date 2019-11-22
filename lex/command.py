@@ -27,14 +27,14 @@ class run_cozmo():
 
     def MATH(self, number):
         def cozmo_program(robot: cozmo.robot.Robot):
-            robot.say_text(number).wait_for_completed()
+            robot.say_text(str(number)).wait_for_completed()
         cozmo.run_program(cozmo_program)
         code = '''
         def MATH(s):
             def cozmo_program(robot: cozmo.robot.Robot):
                 robot.say_text(str({}})).wait_for_completed()
             cozmo.run_program(cozmo_program)
-        '''.format(self.command)
+        '''.format(number)
         return code
 
     def DRIVE(self, num1, num2):

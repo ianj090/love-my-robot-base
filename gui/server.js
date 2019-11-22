@@ -12,14 +12,25 @@ app.use(bodyParser.urlencoded({ extended: false })); // declares encoding exampl
 app.use(bodyParser.json()); // declares to use json FORMAT
 
 let commands = []
+let lmr = commands // Solo lo puse para formatear el payload y para que se mire más como el mock up.
 
 app.get('/postdata', async function (req, res) {
-    var data = { commands }
+    let date_ob = new Date(); // All vars to get the time_stamp
+    let date = ("0" + date_ob.getDate()).slice(-2);
+    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+    let year = date_ob.getFullYear();
+    let hours = date_ob.getHours();
+    let minutes = date_ob.getMinutes();
+    let seconds = date_ob.getSeconds();
+
+    const request_timestamp = month + " " + date + " " + hours+":"+minutes+":"+seconds + " " + year
+
+    var data = { request_timestamp, lmr }
 
     var options = {
         method: 'POST',
         uri: 'http://0.0.0.0:5000/lex',
-        body: data,
+        body: data, 
         json: true // Automatically stringifies the body to JSON
     };
 

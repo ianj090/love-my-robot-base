@@ -39,24 +39,55 @@ class run_cozmo():
         def cozmo_program(robot: cozmo.robot.Robot):
             robot.say_text(str(self.command)).wait_for_completed()
         cozmo.run_program(cozmo_program)
+        code = '''
+        def MATH(s):
+            def cozmo_program(robot: cozmo.robot.Robot):
+                robot.say_text(str({}})).wait_for_completed()
+            cozmo.run_program(cozmo_program)
+        '''.format(self.command)
+        return code
 
     def DRIVE(self, num1, num2):
         def cozmo_program(robot: cozmo.robot.Robot):
             # Drive forwards for 150 millimeters at 50 millimeters-per-second.
             robot.drive_straight(distance_mm(num1), speed_mmps(num2)).wait_for_completed()
         cozmo.run_program(cozmo_program)
+        code = '''
+        def DRIVE(self, n1, n2):
+            def cozmo_program(robot: cozmo.robot.Robot):
+                # Drive forwards for 150 millimeters at 50 millimeters-per-second.
+                robot.drive_straight(distance_mm({}), speed_mmps({})).wait_for_completed()
+            cozmo.run_program(cozmo_program)
+        '''.format(num1,num2)
+        return code
     
     def TURN(self, var1):
         def cozmo_program(robot: cozmo.robot.Robot):
             # Drive forwards for 150 millimeters at 50 millimeters-per-second.
             robot.turn_in_place(degrees(var1)).wait_for_completed()
         cozmo.run_program(cozmo_program)
+        code = '''
+        def TURN(self, v1):
+            def cozmo_program(robot: cozmo.robot.Robot):
+                # Drive forwards for 150 millimeters at 50 millimeters-per-second.
+                robot.turn_in_place(degrees({})).wait_for_completed()
+            cozmo.run_program(cozmo_program)
+        '''.format(var1)
+        return code
     
     def LIFT(self, number1):
         def cozmo_program(robot: cozmo.robot.Robot):
             # Drive forwards for 150 millimeters at 50 millimeters-per-second.
             robot.set_lift_height(number1).wait_for_completed()
         cozmo.run_program(cozmo_program)
+        code = '''
+        def TURN(self, n1):
+            def cozmo_program(robot: cozmo.robot.Robot):
+                # Drive forwards for 150 millimeters at 50 millimeters-per-second.
+                robot.turn_in_place(degrees({})).wait_for_completed()
+            cozmo.run_program(cozmo_program)
+        '''.format(number1)
+        return code
 
     def LIGHT(self, color):
         def cozmo_program(robot: cozmo.robot.Robot):
@@ -84,6 +115,35 @@ class run_cozmo():
 
 
         cozmo.run_program(cozmo_program)
+        code = '''
+        def LIGHT(self, c):
+            def cozmo_program(robot: cozmo.robot.Robot):
+                cube1 = robot.world.get_light_cube(1) #LightCube1Id  # looks like a paperclip
+                cube2 = robot.world.get_light_cube(2)  # looks like a lamp / heart
+                cube3 = robot.world.get_light_cube(3)  # looks like the letters 'ab' over 'T'
+
+                if cube1 is not None:
+                    cube1.set_lights({})
+                else:
+                    cozmo.logger.warning("Cozmo is not connected to a LightCube1Id cube - check the battery.")
+
+                if cube2 is not None:
+                    cube2.set_lights({})
+                else:
+                    cozmo.logger.warning("Cozmo is not connected to a LightCube2Id cube - check the battery.")
+
+                if cube3 is not None:
+                    cube3.set_lights({})
+                else:
+                    cozmo.logger.warning("Cozmo is not connected to a LightCube3Id cube - check the battery.")
+
+                # Keep the lights on for 10 seconds until the program exits
+                time.sleep(10)
+
+
+            cozmo.run_program(cozmo_program)
+        '''.format(color)
+        return code
 
 
     def WHEELIE(self, number):
@@ -91,6 +151,14 @@ class run_cozmo():
             cube1 = robot.world.get_light_cube(number)  # looks like a paperclip
             robot.pop_a_wheelie(cube1).wait_for_completed()
         cozmo.run_program(cozmo_program)
+        code = '''
+        def WHEELIE(self, n):
+            def cozmo_program(robot: cozmo.robot.Robot):
+                cube1 = robot.world.get_light_cube({})  # looks like a paperclip
+                robot.pop_a_wheelie(cube1).wait_for_completed()
+            cozmo.run_program(cozmo_program)
+        '''.format(number)
+        return code
 
 # yeah
 
@@ -282,19 +350,19 @@ def interpret(D):
             I = run_cozmo(None)
             I.LIFT(height)
 
-    # LIGHT
-        elif item == 'Green':
-            cubes_colors = cozmo.lights.green_light
-            I = run_cozmo()
-            I.LIFT(cubes_colors)
-        elif item == 'Red':
-            cubes_colors = cozmo.lights.red_light
-            I = run_cozmo()
-            I.LIFT(cubes_colors)
-        elif item == 'Blue':
-            cubes_colors = cozmo.lights.blue_light
-            I = run_cozmo()
-            I.LIFT(cubes_colors)
+    # # LIGHT
+    #     elif item == 'Green':
+    #         cubes_colors = cozmo.lights.green_light
+    #         I = run_cozmo()
+    #         I.LIFT(cubes_colors)
+    #     elif item == 'Red':
+    #         cubes_colors = cozmo.lights.red_light
+    #         I = run_cozmo()
+    #         I.LIFT(cubes_colors)
+    #     elif item == 'Blue':
+    #         cubes_colors = cozmo.lights.blue_light
+    #         I = run_cozmo()
+    #         I.LIFT(cubes_colors)
     
     # WHEELIE
         elif item == 'WHEELIE 1':

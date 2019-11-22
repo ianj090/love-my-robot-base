@@ -20,6 +20,7 @@ D = {"commands": ["I love you",
 # run_cozmo(48)
 
 
+
 class run_cozmo():
     def __init__(self, command):
         self.command = command
@@ -245,10 +246,45 @@ def interpret(D):
 
     
     # COUNT
-        # elif item == '5'
-		# elif item == '10'
-		# elif item == '50'
-		# elif item == '100'
+        # elif item == '5':
+        #     I = run_cozmo(item)
+        #     I.COUNT()
+		# elif item == '10':
+        #     I = run_cozmo(item)
+        #     I.COUNT()
+		# elif item == '50':
+        #     I = run_cozmo(item)
+        #     I.COUNT()
+		# elif item == '100':
+        #     I = run_cozmo(item)
+        #     I.COUNT()
+    
+    # YES
+        # elif item == 'YES':
+        #     I = run_cozmo(item)
+        #     I.YES()
+
+    # DRIVE
+        # elif item == 'forward':
+        #     first = 150
+        #     second = 50
+        #     I = run_cozmo(first, second)
+        #     I.YES()
+        # elif item == 'forward a little':
+        #     first = 75
+        #     second = 50
+        #     I = run_cozmo(first, second)
+        #     I.YES()
+        # elif item == 'backward':
+        #     first = -150
+        #     second = 50
+        #     I = run_cozmo(first, second)
+        #     I.YES()
+        # elif item == 'backward a little':
+        #     first = -75
+        #     second = 50
+        #     I = run_cozmo(first, second)
+        #     I.YES()
     
 
     

@@ -25,19 +25,9 @@ class run_cozmo():
         '''.format(self.command)
         return code
 
-    def MATH(self):
-        '''
-        10+10
-        100/5
-        (5/2) * 4
-        239/140*139843+2334-234
-        (2+45-90)20
-        40*34/67
-        200-100
-        10000000-99999999
-        '''
+    def MATH(self, number):
         def cozmo_program(robot: cozmo.robot.Robot):
-            robot.say_text(str(self.command)).wait_for_completed()
+            robot.say_text(number).wait_for_completed()
         cozmo.run_program(cozmo_program)
         code = '''
         def MATH(s):
@@ -254,42 +244,50 @@ def interpret(D):
 
     # MATH
         elif item == '10+10':
-            I = run_cozmo(20)
+            num = 20
+            I = run_cozmo(num)
             temp = I.MATH()
             L.append(temp)
 
         elif item == '100/5':
-            I = run_cozmo(20)
+            num = 20
+            I = run_cozmo(num)
             temp = I.MATH()
             L.append(temp)
 
         elif item == '(5/2) * 4':
-            I = run_cozmo(10)
+            num = 10
+            I = run_cozmo(num)
             temp = I.MATH()
             L.append(temp)
 
         elif item == '239/140*139+2334-234':
-            I = run_cozmo(0.01)
+            num = 0.01
+            I = run_cozmo(num)
             temp = I.MATH()
             L.append(temp)
 
         elif item == '(2+45-90)20':
-            I = run_cozmo(-860)
+            num = -860
+            I = run_cozmo(num)
             temp = I.MATH()
             L.append(temp)
 
         elif item == '40*34/67':
-            I = run_cozmo(20.29)
+            num = 20.29
+            I = run_cozmo(num)
             temp = I.MATH()
             L.append(temp)
 
         elif item == '200-100':
-            I = run_cozmo(100)
+            num = 100
+            I = run_cozmo(num)
             temp = I.MATH()
             L.append(temp)
 
         elif item == '10000000-99999999':
-            I = run_cozmo(1)
+            num = 1
+            I = run_cozmo(num)
             temp = I.MATH()
             L.append(temp)
 
@@ -377,68 +375,5 @@ def interpret(D):
             temp = I.LIFT(height)
             L.append(temp)
 
-    # # LIGHT
-    #     elif item == 'Green':
-    #         cubes_colors = cozmo.lights.green_light
-    #         I = run_cozmo()
-    #         I.LIFT(cubes_colors)
-    #     elif item == 'Red':
-    #         cubes_colors = cozmo.lights.red_light
-    #         I = run_cozmo()
-    #         I.LIFT(cubes_colors)
-    #     elif item == 'Blue':
-    #         cubes_colors = cozmo.lights.blue_light
-    #         I = run_cozmo()
-    #         I.LIFT(cubes_colors)
-
-    # # WHEELIE
-    #     elif item == 'WHEELIE 1':
-    #         cube_number = 1
-    #         I = run_cozmo()
-    #         I.WHEELIE(cube_number)
-    #     elif item == 'WHEELIE 2':
-    #         cube_number = 2
-    #         I = run_cozmo()
-    #         I.WHEELIE(cube_number)
-    #     elif item == 'WHEELIE 3':
-    #         cube_number = 3
-    #         I = run_cozmo()
-    #         I.WHEELIE(cube_number)
-
-    # CUBE
-        elif item == 'Circles':
-            cube_number = 1
-            I = run_cozmo()
-            temp = I.CUBE(cube_number)
-            L.append(temp)
-    return L
-
-
 if __name__ == "__main__":
     interpret(D)
-
-
-# import cozmo
-
-# D =  {"commands": ["Hello World", "I love you", "Sorry"]}
-
-# variable = ""
-
-# def interpret(D):
-#     try:
-#         inner_list = D["commands"]
-#     except:
-#         inner_list = None
-
-#     global variable
-#     for item in inner_list:
-#         # SAY
-#         variable = item
-#         print(variable)
-#         cozmo.run_program(cozmo_program)
-
-
-# def cozmo_program(robot: cozmo.robot.Robot):
-#     robot.say_text(variable).wait_for_completed()
-
-# interpret(D)

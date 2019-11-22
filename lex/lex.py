@@ -16,7 +16,8 @@ translatedcode = ""
 def translation():
     return render_template(
         "lex.html",
-        timestamp = time_stamp
+        timestamp = time_stamp,
+        code = translatedcode
     )
 
 
@@ -25,9 +26,10 @@ def lex(): # Todas las operaciones van a pasar aqui!!!
     data = request.get_json()
     print(data)
     global time_stamp
+    global translatedcode
     time_stamp = data["request_timestamp"]
     translation()
-    command.interpret(data)
+    translatedcode = command.interpret(data)
     # do something with this data variable that contains the data from the node server
     return json.dumps({"Connection":"Succesful"})
 

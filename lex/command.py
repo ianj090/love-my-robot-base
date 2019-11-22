@@ -29,6 +29,13 @@ class AttributeSayCozmo():
         def cozmo_program(robot: cozmo.robot.Robot):
             robot.say_text(str(self.command)).wait_for_completed() 
         cozmo.run_program(cozmo_program)
+        code = '''
+        def SAY(s):
+            def cozmo_program(robot: cozmo.robot.Robot):
+                robot.say_text(str({})).wait_for_completed() 
+            cozmo.run_program(cozmo_program)
+        '''.format(self.command)
+        return code
 
     def MATH(self):
         '''
@@ -101,9 +108,9 @@ class
         
     def WHEELIE(self):
         '''
-        1
-        2
-        3
+        WHEELIE 1
+        WHEELIE 2
+        WHEELIE 3
         '''
         def cozmo_program(robot: cozmo.robot.Robot):
             robot.say_text(str(self.command)).wait_for_completed() 
@@ -111,9 +118,9 @@ class
         
     def CUBE(self):
         '''
-        circles
-        diamonds
-        triangles
+        Circles
+        Diamonds
+        Triangles
         '''
         def cozmo_program(robot: cozmo.robot.Robot):
             robot.say_text(str(self.command)).wait_for_completed() 
@@ -121,9 +128,9 @@ class
         
     def PICKUP(self):
         '''
-        1
-        2
-        3
+        PICKUP 1
+        PICKUP 2
+        PICKUP 3
         '''
         def cozmo_program(robot: cozmo.robot.Robot):
             robot.say_text(str(self.command)).wait_for_completed() 

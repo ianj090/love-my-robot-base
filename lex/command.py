@@ -339,12 +339,6 @@ def interpret(D):
             temp = I.DRIVE(first, second)
             L.append(temp)
 
-        elif item == 'Backward a little':
-            first = -100
-            second = 50
-            I = run_cozmo(None)
-            temp = I.DRIVE(first, second)
-            L.append(temp)
     # TURN
         elif item == 'Right':
             degree = 90

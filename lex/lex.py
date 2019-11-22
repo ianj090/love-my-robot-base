@@ -18,7 +18,7 @@ def translation():
 def lex(): # Todas las operaciones van a pasar aqui!!!
     data = request.get_json()
     print(data)
-    
+    command.interpret(data)
     # do something with this data variable that contains the data from the node server
     return json.dumps({"Connection":"Succesful"})
 

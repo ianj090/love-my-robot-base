@@ -68,7 +68,7 @@ app.post('/delete-command', function (req, res) { // solo funciona cuando se acc
 
 app.post('/delete-all', function (req, res) { // manda un mensaje a la terminal para saber lo que está pasando
     console.log(req.body); 
-    commands = []; // declara que comands es NADA
+    lmr = []; // declara que comands es NADA
     res.json({ message: "Commands deleted" });
 })
 

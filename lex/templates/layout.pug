@@ -1,0 +1,62 @@
+head
+  title LMRLEX
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=100%, initial-scale=1.0')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js')
+  link(href='https://fonts.googleapis.com/css?family=Exo+2:700&display=swap' rel='stylesheet')
+  style.
+    .navbar {
+    background-image: url('https://i-love-png.com/images/grid-half-blue.png');
+    background-repeat: repeat;
+    min-height: 80px;
+    }
+    .navbar.navbar-expand-sm.navbar-light li a{
+    color: rgb(0, 0, 0);
+    padding: 30px;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 19px;
+    }
+    body {
+    background: linear-gradient(0deg, rgba(255,128,0,1) 0%, rgba(253,153,0,1) 25%, rgba(248,212,0,1) 100%);
+    background-repeat: no-repeat;
+    /* this will make the gradient cover the entire body */
+    background-attachment: fixed;
+    background-size: cover;
+    }
+    /* navbar-brand edits are to adjust the page title and logo in the navbar */
+    .navbar-brand
+    {
+    padding: 10px;
+    display: block;
+    }
+    .navbar-brand>img {
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto 40%;
+    }
+    /* adjust the  Big brain. Bigger personality.*/
+    .navbar-text{
+    position: absolute;
+    right: 10px;
+    padding: 5px;
+    color: cornflowerblue;
+    font-size: 32px;
+    font-family: 'Exo 2', sans-serif;
+    }
+    /* containers */
+nav.navbar.navbar-expand-sm.navbar-light
+  a.navbar-brand
+    span
+      img(src='https://img1.apk.tools/300/a/b/6/com.anki.cozmo.png' width='62' alt='')
+  .container
+    ul.nav.navbar-nav
+      li
+        a(href='/translated')  TRANSLATED CODE 
+      li
+        a(href='/lex') LEX
+    span.navbar-text
+      | LEX
+    |         {%block body%}{%endblock%}

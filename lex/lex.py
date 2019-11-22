@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import requests, sys, json, command
+import requests, sys, json#, command
 
 app = Flask(__name__)
 
@@ -18,9 +18,12 @@ def translation():
 def lex(): # Todas las operaciones van a pasar aqui!!!
     data = request.get_json()
     print(data)
-    command.interpret(data)
+    # data_dict = json.loads(data)[0]
+    time_stamp = data["request_timestamp"]
+    # command.interpret(data)
     # do something with this data variable that contains the data from the node server
     return json.dumps({"Connection":"Succesful"})
+    
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")

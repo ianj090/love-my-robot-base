@@ -51,7 +51,7 @@ class run_cozmo():
 def interpret(D):
     L = []  # para las variables
     try:
-        inner_list = D["commands"]
+        inner_list = D["lmr"]
     except:
         inner_list = None
 

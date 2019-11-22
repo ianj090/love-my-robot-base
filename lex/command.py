@@ -1,4 +1,5 @@
 import cozmo
+from cozmo.util import degrees, distance_mm, speed_mmps
 
 D = {"commands": ["I love you",
                   "Hello World",
@@ -38,11 +39,22 @@ class run_cozmo():
             robot.say_text(str(self.command)).wait_for_completed()
         cozmo.run_program(cozmo_program)
 
-    def movement(self, num1, num2):
+    def DRIVE(self, num1, num2):
         def cozmo_program(robot: cozmo.robot.Robot):
             # Drive forwards for 150 millimeters at 50 millimeters-per-second.
-            robot.drive_straight(distance_mm(
-                num1), speed_mmps(num2)).wait_for_completed()
+            robot.drive_straight(distance_mm(num1), speed_mmps(num2)).wait_for_completed()
+        cozmo.run_program(cozmo_program)
+    
+    def TURN(self, var1):
+        def cozmo_program(robot: cozmo.robot.Robot):
+            # Drive forwards for 150 millimeters at 50 millimeters-per-second.
+            robot.turn_in_place(degrees(var1)).wait_for_completed()
+        cozmo.run_program(cozmo_program)
+    
+    def LIFT(self, number1):
+        def cozmo_program(robot: cozmo.robot.Robot):
+            # Drive forwards for 150 millimeters at 50 millimeters-per-second.
+            robot.set_lift_height(number1).wait_for_completed()
         cozmo.run_program(cozmo_program)
 
 # yeah
@@ -170,19 +182,14 @@ def interpret(D):
             for a in range(0, 5):
                 I = run_cozmo(a)
                 I.SAY()
-        elif item == '7':
-            for b in range(0, 7):
+        elif item == '10':
+            for b in range(0, 10):
                 I = run_cozmo(b)
                 I.SAY()
 
-        elif item == '8':
+        elif item == '15':
             for c in range(0, 8):
                 I = run_cozmo(c)
-                I.SAY()
-
-        elif item == '10':
-            for d in range(0, 10):
-                I = run_cozmo(d)
                 I.SAY()
 
     # YES
@@ -191,26 +198,60 @@ def interpret(D):
             I.SAY()
 
     # DRIVE
-        elif item == 'forward':
+        elif item == 'Forward':
             first = 150
             second = 50
             I = run_cozmo(None)
-            I.movement(first, second)
-        elif item == 'forward a little':
+            I.DRIVE(first, second)
+        elif item == 'Forward a little':
             first = 75
             second = 50
             I = run_cozmo(None)
-            I.movement(first, second)
-        elif item == 'backward':
+            I.DRIVE(first, second)
+        elif item == 'Backward':
             first = -150
             second = 50
             I = run_cozmo(None)
-            I.movement(first, second)
-        elif item == 'backward a little':
+            I.DRIVE(first, second)
+        elif item == 'Backward a little':
             first = -75
             second = 50
             I = run_cozmo(None)
-            I.movement(first, second)
+            I.DRIVE(first, second)
+
+    # TURN
+        elif item == 'Right':
+            degree = 90
+            I = run_cozmo(None)
+            I.TURN(degree)
+        elif item == 'Left':
+            degree = -90
+            I = run_cozmo(None)
+            I.TURN(degree)
+        elif item == 'Turn back':
+            degree = -180
+            I = run_cozmo(None)
+            I.TURN(degree)
+
+    # LIFT
+        elif item == 'LIFT 1':
+            height = 1.0
+            I = run_cozmo(None)
+            I.LIFT(height)
+        elif item == 'LIFT 0.8':
+            height = 0.8
+            I = run_cozmo(None)
+            I.LIFT(height)
+        elif item == 'LIFT 0.5':
+            height = 0.5
+            I = run_cozmo(None)
+            I.LIFT(height)
+
+    # # LIGHT
+    #     elif item == 'LIFT 1':
+    #         height = 1.0
+    #         I = run_cozmo(None)
+    #         I.LIFT(height)
 
 
 if __name__ == "__main__":
